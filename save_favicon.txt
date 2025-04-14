@@ -1,0 +1,22 @@
+# 如何将图片设置为网站图标
+
+请按照以下步骤将您提供的图片设置为网站图标：
+
+1. 将您上传的图片保存为 `favicon.png` 文件
+2. 确保 `favicon.png` 文件与 `index.html` 文件在同一个文件夹中
+3. 图片最好转换为正方形，尺寸建议为32x32或64x64像素
+4. 刷新网页，您的图片应该会显示在浏览器标签页上
+
+## 简单的图片保存方法
+
+如果您使用的是：
+
+- **Windows**：右键点击图片 > 另存为 > 命名为"favicon.png" > 选择保存位置(与index.html同一目录)
+- **Mac**：控制+点击图片 > 下载图片 > 重命名为"favicon.png" > 移动到项目文件夹
+
+## 在线转换工具
+
+如果需要调整图片尺寸或格式，可以使用以下在线工具：
+
+1. [favicon.io](https://favicon.io/favicon-converter/) - 非常简单易用的在线转换工具
+2. [RealFaviconGenerator](https://realfavicongenerator.net/) - 提供完整的favicon解决方案 
