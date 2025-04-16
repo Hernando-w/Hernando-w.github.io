@@ -36,6 +36,12 @@
             background-color: #5555ff;
             color: white;
         }
+        .hidden {
+            display: none;
+        }
+        .ssq-data {
+            display: none;
+        }
         @media (max-width: 640px) {
             .lottery-number {
                 width: 30px;
@@ -70,60 +76,69 @@
         </div>
 
         <!-- 大乐透内容 -->
-        <div id="content-dlt" class="tab-content active">
+        <div id="content-dlt" class="tab-content active dlt-data">
             <!-- 概率预测 -->
             <section class="mb-12 bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-                    <i class="fas fa-chart-line text-blue-600 mr-2"></i>概率预测
-                </h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white">
-                        <thead>
-                            <tr>
-                                <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">号码</th>
-                                <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">历史出现次数</th>
-                                <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">下次出现概率</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dlt-probability">
-                            <!-- 将由JavaScript动态生成 -->
-                        </tbody>
-                    </table>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 pb-2">
+                        <i class="fas fa-chart-line text-blue-600 mr-2"></i>概率预测
+                    </h2>
+                    <select id="lottery-type" class="px-4 py-2 border rounded-lg">
+                        <option value="dlt">大乐透</option>
+                        <option value="ssq">双色球</option>
+                    </select>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">前区号码概率</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead>
+                                    <tr>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">号码</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">历史出现次数</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">下次出现概率</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dlt-front-probability-body">
+                                    <!-- 将由JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">后区号码概率</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead>
+                                    <tr>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">号码</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">历史出现次数</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">下次出现概率</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dlt-back-probability-body">
+                                    <!-- 将由JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- 彩票预测 -->
             <section class="mb-12 bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-                    <i class="fas fa-magic text-purple-600 mr-2"></i>彩票预测
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-4 border rounded-lg bg-gray-50">
-                        <h3 class="text-lg font-semibold mb-3">预测组合一</h3>
-                        <div class="flex flex-wrap justify-center">
-                            <div class="lottery-number lottery-red">03</div>
-                            <div class="lottery-number lottery-red">15</div>
-                            <div class="lottery-number lottery-red">22</div>
-                            <div class="lottery-number lottery-red">28</div>
-                            <div class="lottery-number lottery-red">33</div>
-                            <div class="lottery-number lottery-blue">06</div>
-                            <div class="lottery-number lottery-blue">12</div>
-                        </div>
-                        <p class="mt-3 text-sm text-gray-600 text-center">预测中奖概率: 76.5%</p>
-                    </div>
-                    <div class="p-4 border rounded-lg bg-gray-50">
-                        <h3 class="text-lg font-semibold mb-3">预测组合二</h3>
-                        <div class="flex flex-wrap justify-center">
-                            <div class="lottery-number lottery-red">07</div>
-                            <div class="lottery-number lottery-red">11</div>
-                            <div class="lottery-number lottery-red">19</div>
-                            <div class="lottery-number lottery-red">26</div>
-                            <div class="lottery-number lottery-red">35</div>
-                            <div class="lottery-number lottery-blue">04</div>
-                            <div class="lottery-number lottery-blue">09</div>
-                        </div>
-                        <p class="mt-3 text-sm text-gray-600 text-center">预测中奖概率: 71.2%</p>
-                    </div>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 pb-2">
+                        <i class="fas fa-magic text-purple-600 mr-2"></i>彩票预测
+                    </h2>
+                    <button class="generate-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        <i class="fas fa-sync-alt mr-2"></i>刷新预测
+                    </button>
+                </div>
+                <div id="dlt-table-body" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- 将由JavaScript动态生成 -->
                 </div>
             </section>
 
@@ -141,7 +156,7 @@
                                 <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">开奖号码</th>
                             </tr>
                         </thead>
-                        <tbody id="dlt-history">
+                        <tbody id="dlt-history-body">
                             <!-- 将由JavaScript动态生成 -->
                         </tbody>
                     </table>
@@ -150,60 +165,65 @@
         </div>
 
         <!-- 双色球内容 -->
-        <div id="content-ssq" class="tab-content">
+        <div id="content-ssq" class="tab-content ssq-data">
             <!-- 概率预测 -->
             <section class="mb-12 bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-                    <i class="fas fa-chart-line text-blue-600 mr-2"></i>概率预测
-                </h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white">
-                        <thead>
-                            <tr>
-                                <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">号码</th>
-                                <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">历史出现次数</th>
-                                <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">下次出现概率</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ssq-probability">
-                            <!-- 将由JavaScript动态生成 -->
-                        </tbody>
-                    </table>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 pb-2">
+                        <i class="fas fa-chart-line text-blue-600 mr-2"></i>概率预测
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">红球号码概率</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead>
+                                    <tr>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">号码</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">历史出现次数</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">下次出现概率</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ssq-red-probability-body">
+                                    <!-- 将由JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">蓝球号码概率</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead>
+                                    <tr>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">号码</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">历史出现次数</th>
+                                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">下次出现概率</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ssq-blue-probability-body">
+                                    <!-- 将由JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- 彩票预测 -->
             <section class="mb-12 bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-                    <i class="fas fa-magic text-purple-600 mr-2"></i>彩票预测
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-4 border rounded-lg bg-gray-50">
-                        <h3 class="text-lg font-semibold mb-3">预测组合一</h3>
-                        <div class="flex flex-wrap justify-center">
-                            <div class="lottery-number lottery-red">05</div>
-                            <div class="lottery-number lottery-red">12</div>
-                            <div class="lottery-number lottery-red">18</div>
-                            <div class="lottery-number lottery-red">23</div>
-                            <div class="lottery-number lottery-red">27</div>
-                            <div class="lottery-number lottery-red">31</div>
-                            <div class="lottery-number lottery-blue">10</div>
-                        </div>
-                        <p class="mt-3 text-sm text-gray-600 text-center">预测中奖概率: 78.3%</p>
-                    </div>
-                    <div class="p-4 border rounded-lg bg-gray-50">
-                        <h3 class="text-lg font-semibold mb-3">预测组合二</h3>
-                        <div class="flex flex-wrap justify-center">
-                            <div class="lottery-number lottery-red">02</div>
-                            <div class="lottery-number lottery-red">09</div>
-                            <div class="lottery-number lottery-red">14</div>
-                            <div class="lottery-number lottery-red">21</div>
-                            <div class="lottery-number lottery-red">25</div>
-                            <div class="lottery-number lottery-red">32</div>
-                            <div class="lottery-number lottery-blue">07</div>
-                        </div>
-                        <p class="mt-3 text-sm text-gray-600 text-center">预测中奖概率: 72.9%</p>
-                    </div>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 pb-2">
+                        <i class="fas fa-magic text-purple-600 mr-2"></i>彩票预测
+                    </h2>
+                    <button class="generate-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        <i class="fas fa-sync-alt mr-2"></i>刷新预测
+                    </button>
+                </div>
+                <div id="ssq-table-body" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- 将由JavaScript动态生成 -->
                 </div>
             </section>
 
@@ -221,7 +241,7 @@
                                 <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">开奖号码</th>
                             </tr>
                         </thead>
-                        <tbody id="ssq-history">
+                        <tbody id="ssq-history-body">
                             <!-- 将由JavaScript动态生成 -->
                         </tbody>
                     </table>
